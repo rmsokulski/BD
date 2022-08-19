@@ -1,10 +1,9 @@
-CREATE DATABASE  IF NOT EXISTS `lojas` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `lojas`;
+CREATE DATABASE IF NOT EXISTS `lojas` DEFAULT CHARACTER SET utf8mb4;
 -- MySQL dump 10.13  Distrib 8.0.29, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: lojas
 -- ------------------------------------------------------
--- Server version	8.0.30
+-- Server version	8.0.30	'
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -20,15 +19,16 @@ USE `lojas`;
 --
 -- Table structure for table `Fornecedores`
 --
-
+USE `lojas`;
 DROP TABLE IF EXISTS `Fornecedores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
+
 CREATE TABLE `Fornecedores` (
-  `cnpj` char(20) NOT NULL,
+  `cnpj` varchar(20) NOT NULL,
   `nome` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`cnpj`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `Funcionarios` (
   PRIMARY KEY (`cpf`),
   KEY `id_loja` (`id_loja`),
   CONSTRAINT `Funcionarios_ibfk_1` FOREIGN KEY (`id_loja`) REFERENCES `Lojas` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -83,7 +83,7 @@ CREATE TABLE `Lojas` (
   PRIMARY KEY (`id`),
   KEY `nomeShopping` (`nomeShopping`,`cidadeShopping`),
   CONSTRAINT `Lojas_ibfk_1` FOREIGN KEY (`nomeShopping`, `cidadeShopping`) REFERENCES `Shoppings` (`nome`, `cidade`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +109,7 @@ CREATE TABLE `LxF` (
   KEY `Fornecedor` (`Fornecedor`),
   CONSTRAINT `LxF_ibfk_1` FOREIGN KEY (`Loja`) REFERENCES `Lojas` (`id`),
   CONSTRAINT `LxF_ibfk_2` FOREIGN KEY (`Fornecedor`) REFERENCES `Fornecedores` (`cnpj`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,7 +132,7 @@ CREATE TABLE `Shoppings` (
   `nome` varchar(20) NOT NULL,
   `cidade` varchar(20) NOT NULL,
   PRIMARY KEY (`nome`,`cidade`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
